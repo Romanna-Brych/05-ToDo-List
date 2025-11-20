@@ -11,3 +11,5 @@ export interface CreateTaskData {
 export interface UpdateTaskData {
   completed: boolean;
 }
+
+export type SortOrder = "asc" | "desc";

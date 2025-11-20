@@ -1,10 +1,21 @@
 import axios from "axios";
-import type { CreateTaskData, Task, UpdateTaskData } from "../types/task";
+import type {
+  CreateTaskData,
+  SortOrder,
+  Task,
+  UpdateTaskData,
+} from "../types/task";
 
 axios.defaults.baseURL = "https://691c9b8d3aaeed735c918575.mockapi.io";
 
-export const getTasks = async () => {
-  const res = await axios.get<Task[]>("/tasks");
+export const getTasks = async (search: string, sortOrder: SortOrder) => {
+  const res = await axios.get<Task[]>("/tasks", {
+    params: {
+      search,
+      sortBy: "completed",
+      order: sortOrder,
+    },
+  });
   return res.data;
 };
 
