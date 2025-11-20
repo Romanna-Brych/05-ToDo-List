@@ -2,6 +2,7 @@ import css from "./App.module.css";
 import TaskList from "../TaskList/TaskList";
 import Modal from "../Modal/Modal";
 import TaskForm from "../TaskForm/TaskForm";
+import useModalControl from "../../components/hooks/useModalControl";
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -12,9 +13,7 @@ import SortFilter from "../SortFilter/SortFilter";
 import type { SortOrder } from "../../types/task";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const { isModalOpen, openModal, closeModal } = useModalControl();
 
   const [search, setSearchValue] = useState("");
   const [sort, setSort] = useState<SortOrder>("asc");
